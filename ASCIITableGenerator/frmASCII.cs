@@ -239,7 +239,11 @@ namespace ASCIITableGenerator
             {
                 //tried the search length you suggested, and, it broke the search, could be I have it setup wrong
                 if (lvwASCII3.Items[i].Text.ToString().Contains(search))
-                {
+                {                    
+                    //Clear the listbox each time a character changes to act like a true filter.
+                    //You can judge to see if it's better or not. --Dave--
+                    lbxResults.Items.Clear();                     
+                    
                     found = true;
                     result = lvwASCII2.Items[i].Text.ToString(); // Added to the results until your search is done and added a line break for each one. 
                     resultSub = lvwASCII.Items[i].Text.ToString();
