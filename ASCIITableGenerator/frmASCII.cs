@@ -303,8 +303,10 @@ namespace ASCIITableGenerator
                         tbxSearch.Focus();
                         tbxSearch.SelectAll();
                         break;
-                    
-                    default:                        
+
+                    default:
+                        search = searchBox(tbxSearch.Text);
+                        lbxResults.Items.Add(search);
                         break;
                 }
             }
@@ -312,51 +314,6 @@ namespace ASCIITableGenerator
             {
                 MessageBox.Show("Error reading entry", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
-            //if (validateData2() == "1")
-            //{
-            //    try
-            //    {
-            //        string search = searchBox(tbxSearch.Text);
-            //        lbxResults.Items.Add(search);
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        MessageBox.Show("Error reading entry", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    }
-            //}
-            //else if (validateData2() == "2")
-            //{
-            //    try
-            //    {
-            //        string search = searchBox(tbxSearch.Text);
-            //        //results = tbxSearch.Text;
-            //        //lbxResults.Items.Clear();
-            //        lbxResults.Items.Add(search);
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        MessageBox.Show("Error reading entry", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    }
-            //}
-            //else if (validateData2() == "3")
-            //{
-            //    try
-            //    {
-            //        string search = searchBox(tbxSearch.Text);
-            //        //results = tbxSearch.Text;
-            //        //lbxResults.Items.Clear();
-            //        lbxResults.Items.Add(search);
-            //    }
-            //    catch(Exception ex)
-            //    {
-            //        MessageBox.Show("Error reading entry", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    }
-            //}
-            //else if (validateData2() == "4")
-            //{
-            //    MessageBox.Show("Can't enter more than 3 characters", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
         }
                  
 
