@@ -328,6 +328,11 @@ namespace ASCIITableGenerator
 
         private void frmASCII_Load(object sender, EventArgs e)
         {
+            //Theme Checkboxes
+            darkThemeToolStripMenuItem.Checked = true;
+            lightThemeToolStripMenuItem.Checked = false;
+            grayScaleToolStripMenuItem.Checked = false;
+
             //link to help file
             asciiHelp.HelpNamespace = Application.StartupPath + "\\asciihelp.chm";
             //define headers for listview
@@ -402,6 +407,11 @@ namespace ASCIITableGenerator
 
         private void darkThemeToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //Theme Checkboxes
+            darkThemeToolStripMenuItem.Checked = true;
+            lightThemeToolStripMenuItem.Checked = false;
+            grayScaleToolStripMenuItem.Checked = false;
+
             BackColor = Color.Black;
             ForeColor = Color.White;
             lvwASCII.BackColor = Color.Gray;
@@ -418,6 +428,11 @@ namespace ASCIITableGenerator
 
         private void lightThemeToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //Theme Checkboxes
+            darkThemeToolStripMenuItem.Checked = false;
+            lightThemeToolStripMenuItem.Checked = true;
+            grayScaleToolStripMenuItem.Checked = false;
+
             BackColor = Color.White;
             ForeColor = Color.Black;
             lvwASCII.BackColor = Color.White;
@@ -434,6 +449,11 @@ namespace ASCIITableGenerator
 
         private void grayScaleToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //Theme Checkboxes
+            darkThemeToolStripMenuItem.Checked = false;
+            lightThemeToolStripMenuItem.Checked = false;
+            grayScaleToolStripMenuItem.Checked = true;
+
             BackColor = Color.LightGray;
             ForeColor = Color.Black;
             lvwASCII.BackColor = Color.Gray;
