@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
@@ -213,6 +214,7 @@ namespace ASCIITableGenerator
             tbxSearch.Clear();
             tbxSearch.Focus();
             lbxResults.Items.Clear();
+            lvwASCII.SelectedItems.Clear();
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -316,6 +318,7 @@ namespace ASCIITableGenerator
             lvwASCII2.View = View.Details;
             lvwASCII3.View = View.Details;
             lvwASCII2.Visible = false;
+            lvwASCII2.FullRowSelect = true;
             ColumnHeader index, ascii, description, index2, ascii2, index3;
             index = new ColumnHeader();
             ascii = new ColumnHeader();
@@ -447,6 +450,41 @@ namespace ASCIITableGenerator
         private void helpToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             Help.ShowHelp(this, asciiHelp.HelpNamespace);
+        }
+
+        private void lvwASCII_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ListView.SelectedListViewItemCollection ascii = this.lvwASCII.SelectedItems;
+            ListView.SelectedListViewItemCollection ascii3 = this.lvwASCII3.SelectedItems;
+            string item = "";
+            lbxResults.Items.Clear();
+            foreach(ListViewItem items in ascii)
+            {
+                item += string.Copy(items.SubItems[1].Text);
+                //string result = "";
+                //string item = items.ToString();
+                //result = lvwASCII3.Items[item].Text;
+                //lbxResults.Items.Add(result);
+            }
+
+            string item3 = "";
+            foreach(ListViewItem items3 in ascii3)
+            {
+                item3 += string.Copy(items3.SubItems[item].Text);
+            }
+            lbxResults.Items.Add(item + " " + item3);
+            
+            //lvwASCII.SelectedItems.ContainsKey();
+            //tbxSearch.Text = lvwASCII.SelectedItems.ToString();
+
+            //int num = 0;
+            //lvwASCII.SelectedIndexChanged += lvwASCII3.SelectedItems.ToString();
+            //string choice = lvwASCII.Items.IndexOf.Text;
+
+            //string choice = num.ToString();
+            //string result = searchBox(choice);
+
+            //lbxResults.Items.Add(lvwASCII.SelectedItems.ToString());
         }
     }
 
