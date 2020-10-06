@@ -56,12 +56,14 @@
             // 
             this.lvwASCII.BackColor = System.Drawing.Color.Gray;
             this.lvwASCII.ForeColor = System.Drawing.Color.Firebrick;
+            this.lvwASCII.FullRowSelect = true;
             this.lvwASCII.HideSelection = false;
             this.lvwASCII.Location = new System.Drawing.Point(11, 38);
             this.lvwASCII.Name = "lvwASCII";
             this.lvwASCII.Size = new System.Drawing.Size(106, 381);
             this.lvwASCII.TabIndex = 0;
             this.lvwASCII.UseCompatibleStateImageBehavior = false;
+            this.lvwASCII.SelectedIndexChanged += new System.EventHandler(this.lvwASCII_SelectedIndexChanged);
             // 
             // lvwASCII2
             // 

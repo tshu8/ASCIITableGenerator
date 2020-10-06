@@ -73,7 +73,7 @@
     <OutputPath>bin\x64\Test\</OutputPath>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
+    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
     <AssemblyOriginatorKeyFile>tshuEdgefieldCompServs.pfx</AssemblyOriginatorKeyFile>
