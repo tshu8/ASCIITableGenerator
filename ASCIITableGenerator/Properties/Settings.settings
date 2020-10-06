@@ -1,7 +1,30 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="ASCIITableGenerator.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="myBackColorForm" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">Black</Value>
+    </Setting>
+    <Setting Name="myForeColorForm" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">White</Value>
+    </Setting>
+    <Setting Name="myBackcolorLvwLbx" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">Gray</Value>
+    </Setting>
+    <Setting Name="myForeColorLvwLbx" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">Firebrick</Value>
+    </Setting>
+    <Setting Name="myBackColorButton" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">DimGray</Value>
+    </Setting>
+    <Setting Name="myForeColorButton" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">White</Value>
+    </Setting>
+    <Setting Name="myForeColorTbx" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">Firebrick</Value>
+    </Setting>
+    <Setting Name="myBackColorTbx" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">Gray</Value>
+    </Setting>
+  </Settings>
 </SettingsFile>

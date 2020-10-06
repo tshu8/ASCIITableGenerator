@@ -8,22 +8,114 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ASCIITableGenerator.Properties
-{
-
-
+namespace ASCIITableGenerator.Properties {
+    
+    
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "11.0.0.0")]
-    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase
-    {
-
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.7.0.0")]
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
-
-        public static Settings Default
-        {
-            get
-            {
+        
+        public static Settings Default {
+            get {
                 return defaultInstance;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Black")]
+        public global::System.Drawing.Color myBackColorForm {
+            get {
+                return ((global::System.Drawing.Color)(this["myBackColorForm"]));
+            }
+            set {
+                this["myBackColorForm"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("White")]
+        public global::System.Drawing.Color myForeColorForm {
+            get {
+                return ((global::System.Drawing.Color)(this["myForeColorForm"]));
+            }
+            set {
+                this["myForeColorForm"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Gray")]
+        public global::System.Drawing.Color myBackcolorLvwLbx {
+            get {
+                return ((global::System.Drawing.Color)(this["myBackcolorLvwLbx"]));
+            }
+            set {
+                this["myBackcolorLvwLbx"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Firebrick")]
+        public global::System.Drawing.Color myForeColorLvwLbx {
+            get {
+                return ((global::System.Drawing.Color)(this["myForeColorLvwLbx"]));
+            }
+            set {
+                this["myForeColorLvwLbx"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("DimGray")]
+        public global::System.Drawing.Color myBackColorButton {
+            get {
+                return ((global::System.Drawing.Color)(this["myBackColorButton"]));
+            }
+            set {
+                this["myBackColorButton"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("White")]
+        public global::System.Drawing.Color myForeColorButton {
+            get {
+                return ((global::System.Drawing.Color)(this["myForeColorButton"]));
+            }
+            set {
+                this["myForeColorButton"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Firebrick")]
+        public global::System.Drawing.Color myForeColorTbx {
+            get {
+                return ((global::System.Drawing.Color)(this["myForeColorTbx"]));
+            }
+            set {
+                this["myForeColorTbx"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Gray")]
+        public global::System.Drawing.Color myBackColorTbx {
+            get {
+                return ((global::System.Drawing.Color)(this["myBackColorTbx"]));
+            }
+            set {
+                this["myBackColorTbx"] = value;
             }
         }
     }

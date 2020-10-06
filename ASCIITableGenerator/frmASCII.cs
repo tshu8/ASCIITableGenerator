@@ -14,6 +14,7 @@ using System.Windows.Forms.VisualStyles;
 
 namespace ASCIITableGenerator
 {
+    
     public partial class frmASCII : Form
     {
         int min = 33;
@@ -25,6 +26,43 @@ namespace ASCIITableGenerator
         public frmASCII()
         {
             InitializeComponent();
+            initializeMainForm();
+        }
+
+        private void initializeMainForm()
+        {
+            this.BackColor = Properties.Settings.Default.myBackColorForm;
+            this.ForeColor = Properties.Settings.Default.myForeColorForm;
+            this.lvwASCII.BackColor = Properties.Settings.Default.myBackcolorLvwLbx;
+            this.lvwASCII.ForeColor = Properties.Settings.Default.myForeColorLvwLbx;
+            this.lbxResults.BackColor = Properties.Settings.Default.myBackcolorLvwLbx;
+            this.lbxResults.ForeColor = Properties.Settings.Default.myForeColorLvwLbx;
+            this.btnClear.BackColor = Properties.Settings.Default.myBackColorButton;
+            this.btnClear.ForeColor = Properties.Settings.Default.myForeColorButton;
+            this.btnExit.BackColor = Properties.Settings.Default.myBackColorButton;
+            this.btnExit.ForeColor = Properties.Settings.Default.myForeColorButton;
+            this.tbxSearch.BackColor = Properties.Settings.Default.myBackColorTbx;
+            this.tbxSearch.ForeColor = Properties.Settings.Default.myForeColorTbx;
+
+            this.FormClosing += mainFormClosingEventHandler;
+        }
+
+        private void mainFormClosingEventHandler(object sender, FormClosingEventArgs e)
+        {
+            Properties.Settings.Default.myBackColorForm = this.BackColor;
+            Properties.Settings.Default.myForeColorForm = this.ForeColor;
+            Properties.Settings.Default.myBackcolorLvwLbx = this.lvwASCII.BackColor;
+            Properties.Settings.Default.myForeColorLvwLbx = this.lvwASCII.ForeColor;
+            Properties.Settings.Default.myBackcolorLvwLbx = this.lbxResults.BackColor;
+            Properties.Settings.Default.myForeColorLvwLbx = this.lbxResults.ForeColor;
+            Properties.Settings.Default.myBackColorButton = this.btnClear.BackColor;
+            Properties.Settings.Default.myForeColorButton = this.btnClear.ForeColor;
+            Properties.Settings.Default.myBackColorButton = this.btnExit.BackColor;
+            Properties.Settings.Default.myForeColorButton = this.btnExit.ForeColor;
+            Properties.Settings.Default.myBackColorTbx = this.tbxSearch.BackColor;
+            Properties.Settings.Default.myForeColorTbx = this.tbxSearch.ForeColor;
+
+            Properties.Settings.Default.Save();
         }
 
         public void descDictionary()
@@ -303,13 +341,103 @@ namespace ASCIITableGenerator
             }
         }
                  
+        //private string asciiTheme(string value)
+        //{
+        //    string mode = string.Empty;
+        //    switch (value)
+        //    {
+        //        case "dark":
+        //            darkThemeToolStripMenuItem.Checked = true;
+        //            lightThemeToolStripMenuItem.Checked = false;
+        //            grayScaleToolStripMenuItem.Checked = false;
+
+        //            BackColor = Color.Black;
+        //            ForeColor = Color.White;
+        //            lvwASCII.BackColor = Color.Gray;
+        //            lvwASCII.ForeColor = Color.Firebrick;
+        //            lbxResults.BackColor = Color.Gray;
+        //            lbxResults.ForeColor = Color.Firebrick;
+        //            tbxSearch.BackColor = Color.Gray;
+        //            tbxSearch.ForeColor = Color.Firebrick;
+        //            btnClear.BackColor = Color.DimGray;
+        //            btnClear.ForeColor = Color.White;
+        //            btnExit.BackColor = Color.DimGray;
+        //            btnExit.ForeColor = Color.White;
+
+        //            mode = "dark";
+        //            break;
+        //        case "light":
+        //            darkThemeToolStripMenuItem.Checked = false;
+        //            lightThemeToolStripMenuItem.Checked = true;
+        //            grayScaleToolStripMenuItem.Checked = false;
+
+        //            BackColor = Color.White;
+        //            ForeColor = Color.Black;
+        //            lvwASCII.BackColor = Color.White;
+        //            lvwASCII.ForeColor = Color.Black;
+        //            lbxResults.BackColor = Color.White;
+        //            lbxResults.ForeColor = Color.Black;
+        //            tbxSearch.BackColor = Color.White;
+        //            tbxSearch.ForeColor = Color.Black;
+        //            btnClear.BackColor = Color.White;
+        //            btnClear.ForeColor = Color.Black;
+        //            btnExit.BackColor = Color.White;
+        //            btnExit.ForeColor = Color.Black;
+        //            //Properties.Settings.Default.Save();
+
+        //            mode = "light";
+        //            break;
+        //        case "gray":
+        //            darkThemeToolStripMenuItem.Checked = false;
+        //            lightThemeToolStripMenuItem.Checked = false;
+        //            grayScaleToolStripMenuItem.Checked = true;
+
+        //            BackColor = Color.LightGray;
+        //            ForeColor = Color.Black;
+        //            lvwASCII.BackColor = Color.Gray;
+        //            lvwASCII.ForeColor = Color.Black;
+        //            lbxResults.BackColor = Color.Gray;
+        //            lbxResults.ForeColor = Color.Black;
+        //            tbxSearch.BackColor = Color.Gray;
+        //            tbxSearch.ForeColor = Color.Black;
+        //            btnClear.BackColor = Color.DimGray;
+        //            btnClear.ForeColor = Color.Black;
+        //            btnExit.BackColor = Color.DimGray;
+        //            btnExit.ForeColor = Color.Black;
+        //            mode = "gray";
+        //            break;
+        //        default:
+        //            darkThemeToolStripMenuItem.Checked = true;
+        //            lightThemeToolStripMenuItem.Checked = false;
+        //            grayScaleToolStripMenuItem.Checked = false;
+
+        //            BackColor = Color.Black;
+        //            ForeColor = Color.White;
+        //            lvwASCII.BackColor = Color.Gray;
+        //            lvwASCII.ForeColor = Color.Firebrick;
+        //            lbxResults.BackColor = Color.Gray;
+        //            lbxResults.ForeColor = Color.Firebrick;
+        //            tbxSearch.BackColor = Color.Gray;
+        //            tbxSearch.ForeColor = Color.Firebrick;
+        //            btnClear.BackColor = Color.DimGray;
+        //            btnClear.ForeColor = Color.White;
+        //            btnExit.BackColor = Color.DimGray;
+        //            btnExit.ForeColor = Color.White;
+
+        //            mode = "dark";
+        //            break;
+        //    }
+            
+        //    return mode;
+        //}
+
+        
 
         private void frmASCII_Load(object sender, EventArgs e)
         {
+            //asciiTheme("light");
             //Theme Checkboxes
-            darkThemeToolStripMenuItem.Checked = true;
-            lightThemeToolStripMenuItem.Checked = false;
-            grayScaleToolStripMenuItem.Checked = false;
+            
 
             //link to help file
             asciiHelp.HelpNamespace = Application.StartupPath + "\\asciihelp.chm";
@@ -384,6 +512,7 @@ namespace ASCIITableGenerator
             abt.ShowDialog();
         }
 
+        string theme = string.Empty;
         private void darkThemeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //Theme Checkboxes
@@ -403,6 +532,11 @@ namespace ASCIITableGenerator
             btnClear.ForeColor = Color.White;
             btnExit.BackColor = Color.DimGray;
             btnExit.ForeColor = Color.White;
+
+            //Properties.Settings.Default.
+            Properties.Settings.Default.Save();
+            theme = "dark";
+            //asciiTheme(theme);
         }
 
         private void lightThemeToolStripMenuItem_Click(object sender, EventArgs e)
@@ -424,6 +558,10 @@ namespace ASCIITableGenerator
             btnClear.ForeColor = Color.Black;
             btnExit.BackColor = Color.White;
             btnExit.ForeColor = Color.Black;
+            Properties.Settings.Default.Save();
+            theme = "light";
+            //asciiTheme(theme);
+
         }
 
         private void grayScaleToolStripMenuItem_Click(object sender, EventArgs e)
@@ -445,6 +583,9 @@ namespace ASCIITableGenerator
             btnClear.ForeColor = Color.Black;
             btnExit.BackColor = Color.DimGray;
             btnExit.ForeColor = Color.Black;
+            Properties.Settings.Default.Save();
+            theme = "gray";
+            //asciiTheme(theme);
         }
 
         private void helpToolStripMenuItem1_Click(object sender, EventArgs e)
