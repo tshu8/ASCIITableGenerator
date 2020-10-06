@@ -83,8 +83,6 @@ namespace ASCIITableGenerator
                 string temp = string.Join(kvp.Value, kvp.Key);
                 lvi.SubItems.Add(temp);
             }
-
-
         }
 
         public void charDictionary()
@@ -126,7 +124,6 @@ namespace ASCIITableGenerator
             charDict.Add("127", "DEL");
 
 
-
             for (int k = min; k < max; k++)
             {
                 char l = (char)k;
@@ -148,7 +145,6 @@ namespace ASCIITableGenerator
             }
 
         }
-
 
         public void charDictionary2()
         {
@@ -229,9 +225,6 @@ namespace ASCIITableGenerator
             clear();
         }
 
-
-     
-
         private string searchBox(string search)
         {
             string result = "";
@@ -277,52 +270,93 @@ namespace ASCIITableGenerator
             return results;
         }
 
+        /// <summary>
+        /// On text change, validate the data to check for 1, 2, or 3 characters. 
+        /// If over the maximum of 3 characters, produce a warning to the user.
+        /// 
+        /// This uses validateData2() to compare the amount of characters entered.
+        /// </summary>        
         private void tbxSearch_TextChanged(object sender, EventArgs e)
         {
-            if (validateData2() == "1")
+            string search = String.Empty;
+            try
             {
-                try
+                switch (validateData2())
                 {
-                    string search = searchBox(tbxSearch.Text);
-                    lbxResults.Items.Add(search);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error reading entry", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    case "1":
+                        search = searchBox(tbxSearch.Text);
+                        lbxResults.Items.Add(search);
+                        break;
+                    
+                    case "2":
+                        search = searchBox(tbxSearch.Text);
+                        lbxResults.Items.Add(search);
+                        break;
+
+                    case "3":
+                        search = searchBox(tbxSearch.Text);
+                        lbxResults.Items.Add(search);
+                        break;
+
+                    case "4":
+                        MessageBox.Show("Can't enter more than 3 characters", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        tbxSearch.Focus();
+                        tbxSearch.SelectAll();
+                        break;
+                    
+                    default:                        
+                        break;
                 }
             }
-            else if (validateData2() == "2")
+            catch (Exception)
             {
-                try
-                {
-                    string search = searchBox(tbxSearch.Text);
-                    //results = tbxSearch.Text;
-                    //lbxResults.Items.Clear();
-                    lbxResults.Items.Add(search);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error reading entry", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                MessageBox.Show("Error reading entry", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else if (validateData2() == "3")
-            {
-                try
-                {
-                    string search = searchBox(tbxSearch.Text);
-                    //results = tbxSearch.Text;
-                    //lbxResults.Items.Clear();
-                    lbxResults.Items.Add(search);
-                }
-                catch(Exception ex)
-                {
-                    MessageBox.Show("Error reading entry", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            else if (validateData2() == "4")
-            {
-                MessageBox.Show("Can't enter more than 3 characters", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            
+            //if (validateData2() == "1")
+            //{
+            //    try
+            //    {
+            //        string search = searchBox(tbxSearch.Text);
+            //        lbxResults.Items.Add(search);
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        MessageBox.Show("Error reading entry", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    }
+            //}
+            //else if (validateData2() == "2")
+            //{
+            //    try
+            //    {
+            //        string search = searchBox(tbxSearch.Text);
+            //        //results = tbxSearch.Text;
+            //        //lbxResults.Items.Clear();
+            //        lbxResults.Items.Add(search);
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        MessageBox.Show("Error reading entry", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    }
+            //}
+            //else if (validateData2() == "3")
+            //{
+            //    try
+            //    {
+            //        string search = searchBox(tbxSearch.Text);
+            //        //results = tbxSearch.Text;
+            //        //lbxResults.Items.Clear();
+            //        lbxResults.Items.Add(search);
+            //    }
+            //    catch(Exception ex)
+            //    {
+            //        MessageBox.Show("Error reading entry", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    }
+            //}
+            //else if (validateData2() == "4")
+            //{
+            //    MessageBox.Show("Can't enter more than 3 characters", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
         }
                  
 
