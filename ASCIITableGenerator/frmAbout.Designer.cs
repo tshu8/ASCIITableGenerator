@@ -76,6 +76,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.lblAbout);
             this.Name = "frmAbout";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "About ASCII Table Generator";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
