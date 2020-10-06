@@ -41,13 +41,13 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.colorSchemeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.darkThemeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lightThemeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.grayScaleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.darkThemeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.lightThemeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.grayScaleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.asciiHelp = new System.Windows.Forms.HelpProvider();
             this.mnuASCII.SuspendLayout();
             this.SuspendLayout();
@@ -157,7 +157,7 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(93, 22);
             this.exitToolStripMenuItem.Text = "Ex&it";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -177,13 +177,34 @@
             this.lightThemeToolStripMenuItem,
             this.grayScaleToolStripMenuItem});
             this.colorSchemeToolStripMenuItem.Name = "colorSchemeToolStripMenuItem";
-            this.colorSchemeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.colorSchemeToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
             this.colorSchemeToolStripMenuItem.Text = "&Themes";
+            // 
+            // darkThemeToolStripMenuItem
+            // 
+            this.darkThemeToolStripMenuItem.Name = "darkThemeToolStripMenuItem";
+            this.darkThemeToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
+            this.darkThemeToolStripMenuItem.Text = "D&ark Theme";
+            this.darkThemeToolStripMenuItem.Click += new System.EventHandler(this.darkThemeToolStripMenuItem_Click);
+            // 
+            // lightThemeToolStripMenuItem
+            // 
+            this.lightThemeToolStripMenuItem.Name = "lightThemeToolStripMenuItem";
+            this.lightThemeToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
+            this.lightThemeToolStripMenuItem.Text = "&Light Theme";
+            this.lightThemeToolStripMenuItem.Click += new System.EventHandler(this.lightThemeToolStripMenuItem_Click);
+            // 
+            // grayScaleToolStripMenuItem
+            // 
+            this.grayScaleToolStripMenuItem.Name = "grayScaleToolStripMenuItem";
+            this.grayScaleToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
+            this.grayScaleToolStripMenuItem.Text = "&Gray Scale";
+            this.grayScaleToolStripMenuItem.Click += new System.EventHandler(this.grayScaleToolStripMenuItem_Click);
             // 
             // clearToolStripMenuItem
             // 
             this.clearToolStripMenuItem.Name = "clearToolStripMenuItem";
-            this.clearToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.clearToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
             this.clearToolStripMenuItem.Text = "C&lear";
             this.clearToolStripMenuItem.Click += new System.EventHandler(this.clearToolStripMenuItem_Click);
             // 
@@ -199,37 +220,16 @@
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.aboutToolStripMenuItem.Text = "&About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem1
             // 
             this.helpToolStripMenuItem1.Name = "helpToolStripMenuItem1";
-            this.helpToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.helpToolStripMenuItem1.Size = new System.Drawing.Size(107, 22);
             this.helpToolStripMenuItem1.Text = "He&lp";
             this.helpToolStripMenuItem1.Click += new System.EventHandler(this.helpToolStripMenuItem1_Click);
-            // 
-            // darkThemeToolStripMenuItem
-            // 
-            this.darkThemeToolStripMenuItem.Name = "darkThemeToolStripMenuItem";
-            this.darkThemeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.darkThemeToolStripMenuItem.Text = "D&ark Theme";
-            this.darkThemeToolStripMenuItem.Click += new System.EventHandler(this.darkThemeToolStripMenuItem_Click);
-            // 
-            // lightThemeToolStripMenuItem
-            // 
-            this.lightThemeToolStripMenuItem.Name = "lightThemeToolStripMenuItem";
-            this.lightThemeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.lightThemeToolStripMenuItem.Text = "&Light Theme";
-            this.lightThemeToolStripMenuItem.Click += new System.EventHandler(this.lightThemeToolStripMenuItem_Click);
-            // 
-            // grayScaleToolStripMenuItem
-            // 
-            this.grayScaleToolStripMenuItem.Name = "grayScaleToolStripMenuItem";
-            this.grayScaleToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.grayScaleToolStripMenuItem.Text = "&Gray Scale";
-            this.grayScaleToolStripMenuItem.Click += new System.EventHandler(this.grayScaleToolStripMenuItem_Click);
             // 
             // frmASCII
             // 
@@ -251,6 +251,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.mnuASCII;
             this.Name = "frmASCII";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ASCII Character Search";
             this.Load += new System.EventHandler(this.frmASCII_Load);
             this.mnuASCII.ResumeLayout(false);
