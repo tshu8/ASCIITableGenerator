@@ -62,6 +62,9 @@ namespace ASCIITableGenerator
             descDict.Add("30", "Record Separator");
             descDict.Add("31", "Unit Separator");
             descDict.Add("32", "Space");
+            descDict.Add("127", "Delete");
+
+
             for (int k = min; k < max; k++)
             {
                 char l = (char)k;
@@ -120,6 +123,7 @@ namespace ASCIITableGenerator
             charDict.Add("30", "RS");// , "Record Separator");
             charDict.Add("31", "US");// , "Unit Separator");
             charDict.Add("32", "SPC");// , "Space");
+            charDict.Add("127", "DEL");
 
 
 
@@ -143,7 +147,6 @@ namespace ASCIITableGenerator
                 lvi.SubItems.Add(temp);
             }
 
-            charDict.Add("127", "DEL");
         }
 
 
@@ -183,6 +186,7 @@ namespace ASCIITableGenerator
             charDict2.Add("30", "RS");// , "Record Separator");
             charDict2.Add("31", "US");// , "Unit Separator");
             charDict2.Add("32", "SPC");// , "Space");
+            charDict2.Add("127", "DEL");
 
 
 
@@ -206,9 +210,14 @@ namespace ASCIITableGenerator
                 lvi.SubItems.Add(temp);
             }
 
-            charDict2.Add("127", "DEL");
         }
 
+        private void clear()
+        {
+            tbxSearch.Clear();
+            tbxSearch.Focus();
+            lbxResults.Items.Clear();
+        }
 
         private void btnExit_Click(object sender, EventArgs e)
         {
@@ -217,61 +226,110 @@ namespace ASCIITableGenerator
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-            tbxSearch.Clear();
-            tbxSearch.Focus();
-            lbxResults.Items.Clear();
+            clear();
         }
 
 
-        string search = "";
-        string result = "";
-        string resultSub = "";
-        int searchValue;
-        bool found = false;
-        bool foundTwo = false;
+     
 
-        private void tbxSearch_TextChanged(object sender, EventArgs e)
+        private string searchBox(string search)
         {
-            search = tbxSearch.Text;
-            //search for listbox
+            string result = "";
 
             for (int i = 0; i <= lvwASCII3.Items.Count - 1; i++)
             {
-                //tried the search length you suggested, and, it broke the search, could be I have it setup wrong
                 if (lvwASCII3.Items[i].Text.ToString().Contains(search))
-                {                    
+                {
                     //Clear the listbox each time a character changes to act like a true filter.
                     //You can judge to see if it's better or not. --Dave--
-                    lbxResults.Items.Clear();                     
-                    
-                    found = true;
-                    result = lvwASCII2.Items[i].Text.ToString(); // Added to the results until your search is done and added a line break for each one. 
-                    resultSub = lvwASCII.Items[i].Text.ToString();
-                    searchValue = i;
+                    lbxResults.Items.Clear();
 
-                    lbxResults.Items.Add(lvwASCII.Items[i].Text.ToString() + " " + lvwASCII2.Items[i].Text.ToString());
-                    //break;
+                    
+
+                    result = lvwASCII.Items[i].Text.ToString() + " " + lvwASCII2.Items[i].Text.ToString();
                 }
             }
-
-            if (!found)
-            {
-                MessageBox.Show("Item not found", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                tbxSearch.Clear();
-                tbxSearch.Focus();
-            }
-            else if (tbxSearch.Text == "")
-            {
-                tbxSearch.Clear();
-                tbxSearch.Text = "";
-                lbxResults.Items.Clear();
-            }
-
+                return result;
         }
+
+
+        private string validateData2()
+        {
+            string results = "";
+
+            if(tbxSearch.Text.Length == 1)
+            {
+                results = "1";
+            }
+            else if(tbxSearch.Text.Length == 2)
+            {
+                results = "2";
+            }
+            else if (tbxSearch.Text.Length == 3)
+            {
+                results = "3";
+            }
+            else if(tbxSearch.Text.Length >= 4)
+            {
+                results = "4";
+            }
+
+            return results;
+        }
+
+        private void tbxSearch_TextChanged(object sender, EventArgs e)
+        {
+            if (validateData2() == "1")
+            {
+                try
+                {
+                    string search = searchBox(tbxSearch.Text);
+                    lbxResults.Items.Add(search);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error reading entry", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else if (validateData2() == "2")
+            {
+                try
+                {
+                    string search = searchBox(tbxSearch.Text);
+                    //results = tbxSearch.Text;
+                    //lbxResults.Items.Clear();
+                    lbxResults.Items.Add(search);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error reading entry", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else if (validateData2() == "3")
+            {
+                try
+                {
+                    string search = searchBox(tbxSearch.Text);
+                    //results = tbxSearch.Text;
+                    //lbxResults.Items.Clear();
+                    lbxResults.Items.Add(search);
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show("Error reading entry", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else if (validateData2() == "4")
+            {
+                MessageBox.Show("Can't enter more than 3 characters", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+                 
 
         private void frmASCII_Load(object sender, EventArgs e)
         {
-            tbxSearch.Focus();
+            //link to help file
+            asciiHelp.HelpNamespace = Application.StartupPath + "\\asciihelp.chm";
             //define headers for listview
             lvwASCII.View = View.Details;
             lvwASCII2.View = View.Details;
@@ -323,10 +381,77 @@ namespace ASCIITableGenerator
             descDictionary();
             charDictionary2();
 
-
+            tbxSearch.Focus();
         }
 
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
 
+        private void clearToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            clear();
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAbout abt = new frmAbout();
+            abt.ShowDialog();
+        }
+
+        private void darkThemeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            BackColor = Color.Black;
+            ForeColor = Color.White;
+            lvwASCII.BackColor = Color.Gray;
+            lvwASCII.ForeColor = Color.Firebrick;
+            lbxResults.BackColor = Color.Gray;
+            lbxResults.ForeColor = Color.Firebrick;
+            tbxSearch.BackColor = Color.Gray;
+            tbxSearch.ForeColor = Color.Firebrick;
+            btnClear.BackColor = Color.DimGray;
+            btnClear.ForeColor = Color.White;
+            btnExit.BackColor = Color.DimGray;
+            btnExit.ForeColor = Color.White;
+        }
+
+        private void lightThemeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            BackColor = Color.White;
+            ForeColor = Color.Black;
+            lvwASCII.BackColor = Color.White;
+            lvwASCII.ForeColor = Color.Black;
+            lbxResults.BackColor = Color.White;
+            lbxResults.ForeColor = Color.Black;
+            tbxSearch.BackColor = Color.White;
+            tbxSearch.ForeColor = Color.Black;
+            btnClear.BackColor = Color.White;
+            btnClear.ForeColor = Color.Black;
+            btnExit.BackColor = Color.White;
+            btnExit.ForeColor = Color.Black;
+        }
+
+        private void grayScaleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            BackColor = Color.LightGray;
+            ForeColor = Color.Black;
+            lvwASCII.BackColor = Color.Gray;
+            lvwASCII.ForeColor = Color.Black;
+            lbxResults.BackColor = Color.Gray;
+            lbxResults.ForeColor = Color.Black;
+            tbxSearch.BackColor = Color.Gray;
+            tbxSearch.ForeColor = Color.Black;
+            btnClear.BackColor = Color.DimGray;
+            btnClear.ForeColor = Color.Black;
+            btnExit.BackColor = Color.DimGray;
+            btnExit.ForeColor = Color.Black;
+        }
+
+        private void helpToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Help.ShowHelp(this, asciiHelp.HelpNamespace);
+        }
     }
 
 }
