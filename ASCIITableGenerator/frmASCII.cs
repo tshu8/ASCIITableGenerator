@@ -283,21 +283,6 @@ namespace ASCIITableGenerator
             {
                 switch (validateData2())
                 {
-                    case "1":
-                        search = searchBox(tbxSearch.Text);
-                        lbxResults.Items.Add(search);
-                        break;
-                    
-                    case "2":
-                        search = searchBox(tbxSearch.Text);
-                        lbxResults.Items.Add(search);
-                        break;
-
-                    case "3":
-                        search = searchBox(tbxSearch.Text);
-                        lbxResults.Items.Add(search);
-                        break;
-
                     case "4":
                         MessageBox.Show("Can't enter more than 3 characters", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         tbxSearch.Focus();
