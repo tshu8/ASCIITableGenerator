@@ -179,6 +179,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="68775263_515459812597991_431302857837248512_n.ico" />
+    <None Include="Resources\edgefield-logo.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

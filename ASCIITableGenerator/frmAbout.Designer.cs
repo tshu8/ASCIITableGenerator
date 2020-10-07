@@ -47,7 +47,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::ASCIITableGenerator.Properties.Resources._68775263_515459812597991_431302857837248512_n;
+            this.pictureBox1.Image = global::ASCIITableGenerator.Properties.Resources.edgefield_logo;
             this.pictureBox1.Location = new System.Drawing.Point(12, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(192, 197);
