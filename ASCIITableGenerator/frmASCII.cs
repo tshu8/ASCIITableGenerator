@@ -17,12 +17,6 @@ namespace ASCIITableGenerator
     
     public partial class frmASCII : Form
     {
-        const char MinChar = (char)33;
-        const char MaxChar = (char)127;
-        Dictionary<string, string> descDict = new Dictionary<string, string>();
-        Dictionary<string, string> charDict = new Dictionary<string, string>();
-        Dictionary<string, string> charDict2 = new Dictionary<string, string>();
-
         public frmASCII()
         {
             InitializeComponent();
@@ -65,153 +59,102 @@ namespace ASCIITableGenerator
             Properties.Settings.Default.Save();
         }
 
-        public void descDictionary()
+        private string GetAsciiShortName(int c)
         {
-
-            descDict.Add("0", "Null Character");
-            descDict.Add("1", "Start of Header");
-            descDict.Add("2", "Start of Text");
-            descDict.Add("3", "End of Text");
-            descDict.Add("4", "End of Transmission");
-            descDict.Add("5", "Enquiry");
-            descDict.Add("6", "Acknowledgment");
-            descDict.Add("7", "Bell");
-            descDict.Add("8", "Backspace");
-            descDict.Add("9", "Horizontal Tab");
-            descDict.Add("10", "Line feed");
-            descDict.Add("11", "Vertical Tab");
-            descDict.Add("12", "Form feed");
-            descDict.Add("13", "Carriage return");
-            descDict.Add("14", "Shift Out");
-            descDict.Add("15", "Shift In");
-            descDict.Add("16", "Data Link Escape");
-            descDict.Add("17", "Device Control 1");
-            descDict.Add("18", "Device Control 2");
-            descDict.Add("19", "Device Control 3");
-            descDict.Add("20", "Device Control 4");
-            descDict.Add("21", "Negative Acknowledgement");
-            descDict.Add("22", "Synchronous idle");
-            descDict.Add("23", "End of Transmission Block");
-            descDict.Add("24", "Cancel");
-            descDict.Add("25", "End of Medium");
-            descDict.Add("26", "SUB Substitute");
-            descDict.Add("27", "Escape");
-            descDict.Add("28", "File Separator");
-            descDict.Add("29", "Group Separator");
-            descDict.Add("30", "Record Separator");
-            descDict.Add("31", "Unit Separator");
-            descDict.Add("32", "Space");
-            descDict.Add("127", "Delete");
-
-            for (int j = MinChar; j < MaxChar; j++)
+            if (c < 0) throw new Exception("Character value is negative");
+            if (c >= 128) throw new Exception("Character value exceeds expected limit of 128");
+            switch (c)
             {
-                descDict.Add(j.ToString(), j.ToString());
-            }
-            foreach (KeyValuePair<string, string> kvp in descDict)
-            {
-                ListViewItem lvi = lvwASCII2.Items.Add(kvp.Value);
-                string temp = string.Join(kvp.Value, kvp.Key);
-                lvi.SubItems.Add(temp);
+                case 0: return "NULL";
+                case 1: return "SOH";
+                case 2: return "STX";
+                case 3: return "ETX";
+                case 4: return "EOT";
+                case 5: return "ENQ";
+                case 6: return "ACK";
+                case 7: return "BEL";
+                case 8: return "BS";
+                case 9: return "HT";
+                case 10: return "LF";
+                case 11: return "VT";
+                case 12: return "FF";
+                case 13: return "CR";
+                case 14: return "SO";
+                case 15: return "SI";
+                case 16: return "DLE";
+                case 17: return "DC1";
+                case 18: return "DC2";
+                case 19: return "DC3";
+                case 20: return "DC4";
+                case 21: return "NAK";
+                case 22: return "SYN";
+                case 23: return "ETB";
+                case 24: return "CAN";
+                case 25: return "EM";
+                case 26: return "S_B";
+                case 27: return "ESC";
+                case 28: return "FS";
+                case 29: return "GS";
+                case 30: return "RS";
+                case 31: return "US";
+                case 32: return "SPC";
+                case 127: return "DEL";
+                default: return ((char)c).ToString();
             }
         }
 
-        public void charDictionary()
+        private string GetAsciiLongName(int c)
         {
-            charDict.Add("0 ", "NULL ");// + "Null Character");
-            charDict.Add("1 ", "SOH");// , "Start of Header");
-            charDict.Add("2", "STX");// , "Start of Text");
-            charDict.Add("3", "ETX");// , "End of Text");
-            charDict.Add("4", "EOT");// , "End of Transmission");
-            charDict.Add("5", "ENQ");// , "Enquiry");
-            charDict.Add("6", "ACK");// , "Acknowledgment");
-            charDict.Add("7", "BEL");// , "Bell");
-            charDict.Add("8", "BS");// , "Backspace");
-            charDict.Add("9", "HT");// , "Horizontal Tab");
-            charDict.Add("10", "LF");// , "Line feed");
-            charDict.Add("11", "VT");// , "Vertical Tab");
-            charDict.Add("12", "FF");// , "Form feed");
-            charDict.Add("13", "CR");// , "Carriage return");
-            charDict.Add("14", "SO");// , "Shift Out");
-            charDict.Add("15", "SI");// , "Shift In");
-            charDict.Add("16", "DLE");// , "Data Link Escape");
-            charDict.Add("17", "DC1");// , "Device Control 1");
-            charDict.Add("18", "DC2");// , "Device Control 2");
-            charDict.Add("19", "DC3");// , "Device Control 3");
-            charDict.Add("20", "DC4");// , "Device Control 4");
-            charDict.Add("21", "NAK");// , "Negative Acknowledgement");
-            charDict.Add("22", "SYN");// , "Synchronous idle");
-            charDict.Add("23", "ETB");// , "End of Transmission Block");
-            charDict.Add("24", "CAN");// , "Cancel");
-            charDict.Add("25", "EM");// , "End of Medium");
-            charDict.Add("26", "S_B");// , "SUB Substitute");
-            charDict.Add("27", "ESC");// , "Escape");
-            charDict.Add("28", "FS");// , "File Separator");
-            charDict.Add("29", "GS");// , "Group Separator");
-            charDict.Add("30", "RS");// , "Record Separator");
-            charDict.Add("31", "US");// , "Unit Separator");
-            charDict.Add("32", "SPC");// , "Space");
-            charDict.Add("127", "DEL");
-
-            for (int j = MinChar; j < MaxChar; j++)
+            if (c < 0) throw new Exception("Character value is negative");
+            if (c >= 128) throw new Exception("Character value exceeds expected limit of 128");
+            switch (c)
             {
-                charDict.Add(j.ToString(), j.ToString());
-            }
-            foreach (KeyValuePair<string, string> kvp in charDict)
-            {
-                ListViewItem lvi = lvwASCII.Items.Add(kvp.Key);
-                string temp = string.Join(kvp.Key, kvp.Value);
-                lvi.SubItems.Add(temp);
+                case 0: return "Null Character";
+                case 1: return "Start of Header";
+                case 2: return "Start of Text";
+                case 3: return "End of Text";
+                case 4: return "End of Transmission";
+                case 5: return "Enquiry";
+                case 6: return "Acknowledgment";
+                case 7: return "Bell";
+                case 8: return "Backspace";
+                case 9: return "Horizontal Tab";
+                case 10: return "Line feed";
+                case 11: return "Vertical Tab";
+                case 12: return "Form feed";
+                case 13: return "Carriage return";
+                case 14: return "Shift Out";
+                case 15: return "Shift In";
+                case 16: return "Data Link Escape";
+                case 17: return "Device Control 1";
+                case 18: return "Device Control 2";
+                case 19: return "Device Control 3";
+                case 20: return "Device Control 4";
+                case 21: return "Negative Acknowledgement";
+                case 22: return "Synchronous idle";
+                case 23: return "End of Transmission Block";
+                case 24: return "Cancel";
+                case 25: return "End of Medium";
+                case 26: return "SUB Substitute";
+                case 27: return "Escape";
+                case 28: return "File Separator";
+                case 29: return "Group Separator";
+                case 30: return "Record Separator";
+                case 31: return "Unit Separator";
+                case 32: return "Space";
+                case 127: return "Delete";
+                default: return ((char)c).ToString();
             }
         }
 
-        public void charDictionary2()
+        private void InitListView()
         {
-            charDict2.Add("0 ", "NULL ");// + "Null Character");
-            charDict2.Add("1 ", "SOH");// , "Start of Header");
-            charDict2.Add("2", "STX");// , "Start of Text");
-            charDict2.Add("3", "ETX");// , "End of Text");
-            charDict2.Add("4", "EOT");// , "End of Transmission");
-            charDict2.Add("5", "ENQ");// , "Enquiry");
-            charDict2.Add("6", "ACK");// , "Acknowledgment");
-            charDict2.Add("7", "BEL");// , "Bell");
-            charDict2.Add("8", "BS");// , "Backspace");
-            charDict2.Add("9", "HT");// , "Horizontal Tab");
-            charDict2.Add("10", "LF");// , "Line feed");
-            charDict2.Add("11", "VT");// , "Vertical Tab");
-            charDict2.Add("12", "FF");// , "Form feed");
-            charDict2.Add("13", "CR");// , "Carriage return");
-            charDict2.Add("14", "SO");// , "Shift Out");
-            charDict2.Add("15", "SI");// , "Shift In");
-            charDict2.Add("16", "DLE");// , "Data Link Escape");
-            charDict2.Add("17", "DC1");// , "Device Control 1");
-            charDict2.Add("18", "DC2");// , "Device Control 2");
-            charDict2.Add("19", "DC3");// , "Device Control 3");
-            charDict2.Add("20", "DC4");// , "Device Control 4");
-            charDict2.Add("21", "NAK");// , "Negative Acknowledgement");
-            charDict2.Add("22", "SYN");// , "Synchronous idle");
-            charDict2.Add("23", "ETB");// , "End of Transmission Block");
-            charDict2.Add("24", "CAN");// , "Cancel");
-            charDict2.Add("25", "EM");// , "End of Medium");
-            charDict2.Add("26", "S_B");// , "SUB Substitute");
-            charDict2.Add("27", "ESC");// , "Escape");
-            charDict2.Add("28", "FS");// , "File Separator");
-            charDict2.Add("29", "GS");// , "Group Separator");
-            charDict2.Add("30", "RS");// , "Record Separator");
-            charDict2.Add("31", "US");// , "Unit Separator");
-            charDict2.Add("32", "SPC");// , "Space");
-            charDict2.Add("127", "DEL");
-
-            for (int j = MinChar; j < MaxChar; j++)
+            for (var x=0; x < 128; x++)
             {
-                charDict2.Add(j.ToString(), j.ToString());
+                ListViewItem lvi = lvwASCII.Items.Add(x.ToString());
+                lvi.SubItems.Add(GetAsciiShortName(x));
+                lvi.SubItems.Add(GetAsciiLongName(x));
             }
-            foreach (KeyValuePair<string, string> kvp in charDict2)
-            {
-                ListViewItem lvi = lvwASCII3.Items.Add(kvp.Value);
-                string temp = string.Join(kvp.Value, kvp.Key);
-                lvi.SubItems.Add(temp);
-            }
-
         }
 
         private void clear()
@@ -232,51 +175,6 @@ namespace ASCIITableGenerator
             clear();
         }
 
-        private string searchBox(string search)
-        {
-            string result = "";
-
-            for (int i = 0; i <= lvwASCII3.Items.Count - 1; i++)
-            {
-                if (lvwASCII3.Items[i].Text.ToString().Contains(search))
-                {
-                    //Clear the listbox each time a character changes to act like a true filter.
-                    //You can judge to see if it's better or not. --Dave--
-                    lbxResults.Items.Clear();
-
-                    
-
-                    result = lvwASCII.Items[i].Text.ToString() + " " + lvwASCII2.Items[i].Text.ToString();
-                }
-            }
-                return result;
-        }
-
-
-        private string validateData2()
-        {
-            string results = "";
-
-            if(tbxSearch.Text.Length == 1)
-            {
-                results = "1";
-            }
-            else if(tbxSearch.Text.Length == 2)
-            {
-                results = "2";
-            }
-            else if (tbxSearch.Text.Length == 3)
-            {
-                results = "3";
-            }
-            else if(tbxSearch.Text.Length >= 4)
-            {
-                results = "4";
-            }
-
-            return results;
-        }
-
         /// <summary>
         /// On text change, validate the data to check for 1, 2, or 3 characters. 
         /// If over the maximum of 3 characters, produce a warning to the user.
@@ -285,26 +183,17 @@ namespace ASCIITableGenerator
         /// </summary>        
         private void tbxSearch_TextChanged(object sender, EventArgs e)
         {
-            string search = String.Empty;
-            try
+            lvwASCII.SelectedItems.Clear();
+            if (string.IsNullOrEmpty(tbxSearch.Text)) return; // If input is blank, do nothing
+            var searchText = tbxSearch.Text.ToUpper();
+            foreach (ListViewItem item in lvwASCII.Items)
             {
-                switch (validateData2())
+                if (item.Text.ToUpper().Contains(searchText) ||
+                    item.SubItems[1].Text.ToUpper().Contains(searchText) ||
+                    item.SubItems[2].Text.ToUpper().Contains(searchText))
                 {
-                    case "4":
-                        MessageBox.Show("Can't enter more than 3 characters", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        tbxSearch.Focus();
-                        tbxSearch.SelectAll();
-                        break;
-
-                    default:
-                        search = searchBox(tbxSearch.Text);
-                        lbxResults.Items.Add(search);
-                        break;
+                    item.Selected = true;
                 }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Error reading entry", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -318,55 +207,30 @@ namespace ASCIITableGenerator
             asciiHelp.HelpNamespace = Application.StartupPath + "\\asciihelp.chm";
             //define headers for listview
             lvwASCII.View = View.Details;
-            lvwASCII2.View = View.Details;
-            lvwASCII3.View = View.Details;
-            lvwASCII2.Visible = false;
-            lvwASCII2.FullRowSelect = true;
             ColumnHeader index, ascii, description, index2, ascii2, index3;
             index = new ColumnHeader();
             ascii = new ColumnHeader();
             description = new ColumnHeader();
-            index2 = new ColumnHeader();
-            index3 = new ColumnHeader();
-            ascii2 = new ColumnHeader();
 
             //set header attributes
             index.Text = "Index";
             index.TextAlign = HorizontalAlignment.Left;
             index.Width = 40;
 
-            index2.Text = "Index";
-            index2.TextAlign = HorizontalAlignment.Left;
-            index2.Width = 40;
-
-            index3.Text = "Index";
-            index3.TextAlign = HorizontalAlignment.Left;
-            index3.Width = 40;
-
-
             ascii.Text = "ASCII";
             ascii.TextAlign = HorizontalAlignment.Left;
             ascii.Width = 45;
 
-            ascii2.Text = "ASCII";
-            ascii2.TextAlign = HorizontalAlignment.Left;
-            ascii2.Width = 45;
-
             description.Text = "Description";
             description.TextAlign = HorizontalAlignment.Left;
-            description.Width = 150;
+            description.Width = 0;
 
             //add columns to listview
             lvwASCII.Columns.Add(index);
             lvwASCII.Columns.Add(ascii);
-            lvwASCII2.Columns.Add(description);
-            lvwASCII2.Columns.Add(index2);
-            lvwASCII3.Columns.Add(ascii2);
-            lvwASCII3.Columns.Add(index3);
+            lvwASCII.Columns.Add(description);
 
-            charDictionary();
-            descDictionary();
-            charDictionary2();
+            InitListView();
 
             tbxSearch.Focus();
         }
@@ -429,21 +293,12 @@ namespace ASCIITableGenerator
 
         private void lvwASCII_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ListView.SelectedListViewItemCollection ascii = this.lvwASCII.SelectedItems;
-            ListView.SelectedListViewItemCollection ascii3 = this.lvwASCII3.SelectedItems;
-            string item = "";
             lbxResults.Items.Clear();
-            foreach(ListViewItem items in ascii)
+            foreach (ListViewItem items in lvwASCII.SelectedItems)
             {
-                item += string.Copy(items.SubItems[1].Text);
+                var text = items.Text + " - " + items.SubItems[1].Text + " - " + items.SubItems[2].Text;
+                lbxResults.Items.Add(text);
             }
-
-            string item3 = "";
-            foreach(ListViewItem items3 in ascii3)
-            {
-                item3 += string.Copy(items3.SubItems[item].Text);
-            }
-            lbxResults.Items.Add(item + " " + item3);
         }
     }
 
