@@ -387,80 +387,39 @@ namespace ASCIITableGenerator
             abt.ShowDialog();
         }
 
-        string theme = string.Empty;
         private void darkThemeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //Theme Checkboxes
-            darkThemeToolStripMenuItem.Checked = true;
-            lightThemeToolStripMenuItem.Checked = false;
-            grayScaleToolStripMenuItem.Checked = false;
-
-            BackColor = Color.Black;
-            ForeColor = Color.White;
-            lvwASCII.BackColor = Color.Gray;
-            lvwASCII.ForeColor = Color.Firebrick;
-            lbxResults.BackColor = Color.Gray;
-            lbxResults.ForeColor = Color.Firebrick;
-            tbxSearch.BackColor = Color.Gray;
-            tbxSearch.ForeColor = Color.Firebrick;
-            btnClear.BackColor = Color.DimGray;
-            btnClear.ForeColor = Color.White;
-            btnExit.BackColor = Color.DimGray;
-            btnExit.ForeColor = Color.White;
-
-            //Properties.Settings.Default.
-            Properties.Settings.Default.Save();
-            theme = "dark";
-            //asciiTheme(theme);
+            SetTheme(ApplicationThemes.DarkTheme);
         }
 
         private void lightThemeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //Theme Checkboxes
-            darkThemeToolStripMenuItem.Checked = false;
-            lightThemeToolStripMenuItem.Checked = true;
-            grayScaleToolStripMenuItem.Checked = false;
-
-            BackColor = Color.White;
-            ForeColor = Color.Black;
-            lvwASCII.BackColor = Color.White;
-            lvwASCII.ForeColor = Color.Black;
-            lbxResults.BackColor = Color.White;
-            lbxResults.ForeColor = Color.Black;
-            tbxSearch.BackColor = Color.White;
-            tbxSearch.ForeColor = Color.Black;
-            btnClear.BackColor = Color.White;
-            btnClear.ForeColor = Color.Black;
-            btnExit.BackColor = Color.White;
-            btnExit.ForeColor = Color.Black;
-            Properties.Settings.Default.Save();
-            theme = "light";
-            //asciiTheme(theme);
-
+            SetTheme(ApplicationThemes.LightTheme);
         }
 
         private void grayScaleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //Theme Checkboxes
-            darkThemeToolStripMenuItem.Checked = false;
-            lightThemeToolStripMenuItem.Checked = false;
-            grayScaleToolStripMenuItem.Checked = true;
+            SetTheme(ApplicationThemes.GrayTheme);
+        }
 
-            BackColor = Color.LightGray;
-            ForeColor = Color.Black;
-            lvwASCII.BackColor = Color.Gray;
-            lvwASCII.ForeColor = Color.Black;
-            lbxResults.BackColor = Color.Gray;
-            lbxResults.ForeColor = Color.Black;
-            tbxSearch.BackColor = Color.Gray;
-            tbxSearch.ForeColor = Color.Black;
-            btnClear.BackColor = Color.DimGray;
-            btnClear.ForeColor = Color.Black;
-            btnExit.BackColor = Color.DimGray;
-            btnExit.ForeColor = Color.Black;
-            Properties.Settings.Default.Save();
-            theme = "gray";
-            //asciiTheme(theme);
+        private void SetTheme(IApplicationTheme theme)
+        {
+            darkThemeToolStripMenuItem.Checked = theme.ThemeName == ApplicationThemes.DarkTheme.ThemeName;
+            lightThemeToolStripMenuItem.Checked = theme.ThemeName == ApplicationThemes.LightTheme.ThemeName;
+            grayScaleToolStripMenuItem.Checked = theme.ThemeName == ApplicationThemes.GrayTheme.ThemeName;
+
+            BackColor = theme.BackgroundColor;
+            ForeColor = theme.ForegroundColor;
+            lvwASCII.BackColor = theme.ControlBackgroundColor;
+            lvwASCII.ForeColor = theme.ControlForegroundColor;
+            lbxResults.BackColor = theme.ControlBackgroundColor;
+            lbxResults.ForeColor = theme.ControlForegroundColor;
+            tbxSearch.BackColor = theme.ControlBackgroundColor;
+            tbxSearch.ForeColor = theme.ControlForegroundColor;
+            btnClear.BackColor = theme.ButtonBackgroundColor;
+            btnClear.ForeColor = theme.ButtonForegroundColor;
+            btnExit.BackColor = theme.ButtonBackgroundColor;
+            btnExit.ForeColor = theme.ButtonForegroundColor;
         }
 
         private void helpToolStripMenuItem1_Click(object sender, EventArgs e)
