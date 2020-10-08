@@ -17,8 +17,8 @@ namespace ASCIITableGenerator
     
     public partial class frmASCII : Form
     {
-        int min = 33;
-        int max = 127;
+        const char MinChar = (char)33;
+        const char MaxChar = (char)127;
         Dictionary<string, string> descDict = new Dictionary<string, string>();
         Dictionary<string, string> charDict = new Dictionary<string, string>();
         Dictionary<string, string> charDict2 = new Dictionary<string, string>();
@@ -103,18 +103,9 @@ namespace ASCIITableGenerator
             descDict.Add("32", "Space");
             descDict.Add("127", "Delete");
 
-
-            for (int k = min; k < max; k++)
+            for (int j = MinChar; j < MaxChar; j++)
             {
-                char l = (char)k;
-
-            }
-            for (int j = min; j < max; j++)
-            {
-                char d = (char)j;
-
-                descDict.Add(j.ToString(), d.ToString());
-
+                descDict.Add(j.ToString(), j.ToString());
             }
             foreach (KeyValuePair<string, string> kvp in descDict)
             {
@@ -126,7 +117,6 @@ namespace ASCIITableGenerator
 
         public void charDictionary()
         {
-
             charDict.Add("0 ", "NULL ");// + "Null Character");
             charDict.Add("1 ", "SOH");// , "Start of Header");
             charDict.Add("2", "STX");// , "Start of Text");
@@ -162,32 +152,20 @@ namespace ASCIITableGenerator
             charDict.Add("32", "SPC");// , "Space");
             charDict.Add("127", "DEL");
 
-
-            for (int k = min; k < max; k++)
+            for (int j = MinChar; j < MaxChar; j++)
             {
-                char l = (char)k;
-
-            }
-            for (int j = min; j < max; j++)
-            {
-                char d = (char)j;
-
-                charDict.Add(j.ToString(), d.ToString());
-
+                charDict.Add(j.ToString(), j.ToString());
             }
             foreach (KeyValuePair<string, string> kvp in charDict)
             {
                 ListViewItem lvi = lvwASCII.Items.Add(kvp.Key);
                 string temp = string.Join(kvp.Key, kvp.Value);
-                string temp2 = kvp.Key.ToString();
                 lvi.SubItems.Add(temp);
             }
-
         }
 
         public void charDictionary2()
         {
-
             charDict2.Add("0 ", "NULL ");// + "Null Character");
             charDict2.Add("1 ", "SOH");// , "Start of Header");
             charDict2.Add("2", "STX");// , "Start of Text");
@@ -223,25 +201,14 @@ namespace ASCIITableGenerator
             charDict2.Add("32", "SPC");// , "Space");
             charDict2.Add("127", "DEL");
 
-
-
-            for (int k = min; k < max; k++)
+            for (int j = MinChar; j < MaxChar; j++)
             {
-                char l = (char)k;
-
-            }
-            for (int j = min; j < max; j++)
-            {
-                char d = (char)j;
-
-                charDict2.Add(j.ToString(), d.ToString());
-
+                charDict2.Add(j.ToString(), j.ToString());
             }
             foreach (KeyValuePair<string, string> kvp in charDict2)
             {
                 ListViewItem lvi = lvwASCII3.Items.Add(kvp.Value);
                 string temp = string.Join(kvp.Value, kvp.Key);
-                string temp2 = kvp.Key.ToString();
                 lvi.SubItems.Add(temp);
             }
 
@@ -510,10 +477,6 @@ namespace ASCIITableGenerator
             foreach(ListViewItem items in ascii)
             {
                 item += string.Copy(items.SubItems[1].Text);
-                //string result = "";
-                //string item = items.ToString();
-                //result = lvwASCII3.Items[item].Text;
-                //lbxResults.Items.Add(result);
             }
 
             string item3 = "";
@@ -522,18 +485,6 @@ namespace ASCIITableGenerator
                 item3 += string.Copy(items3.SubItems[item].Text);
             }
             lbxResults.Items.Add(item + " " + item3);
-            
-            //lvwASCII.SelectedItems.ContainsKey();
-            //tbxSearch.Text = lvwASCII.SelectedItems.ToString();
-
-            //int num = 0;
-            //lvwASCII.SelectedIndexChanged += lvwASCII3.SelectedItems.ToString();
-            //string choice = lvwASCII.Items.IndexOf.Text;
-
-            //string choice = num.ToString();
-            //string result = searchBox(choice);
-
-            //lbxResults.Items.Add(lvwASCII.SelectedItems.ToString());
         }
     }
 
