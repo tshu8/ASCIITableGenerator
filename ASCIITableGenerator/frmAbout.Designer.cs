@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAbout));
             this.lblAbout = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnClose = new System.Windows.Forms.Button();
@@ -42,8 +43,8 @@
             this.lblAbout.Size = new System.Drawing.Size(193, 104);
             this.lblAbout.TabIndex = 0;
             this.lblAbout.Text = "ASCII Table Generator\r\n\r\nCreated by: Thomas Shuster\r\nCompany: Edgefield Computer " +
-    "Services\r\nIn partnership with Dave Kuehne\r\nDate: October 5, 2020\r\n\r\nVersion: 0.9" +
-    "\r\n";
+    "Services\r\nIn partnership with Dave Kuehne\r\nDate: October 5, 2020\r\n\r\nVersion: 1.0" +
+    ".1";
             // 
             // pictureBox1
             // 
@@ -75,6 +76,7 @@
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.lblAbout);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmAbout";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "About ASCII Table Generator";
