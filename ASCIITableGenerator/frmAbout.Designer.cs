@@ -44,7 +44,7 @@
             this.lblAbout.TabIndex = 0;
             this.lblAbout.Text = "ASCII Table Generator\r\n\r\nCreated by: Thomas Shuster\r\nCompany: Edgefield Computer " +
     "Services\r\nIn partnership with Dave Kuehne\r\nDate: October 5, 2020\r\n\r\nVersion: 1.0" +
-    ".1";
+    ".2";
             // 
             // pictureBox1
             // 
